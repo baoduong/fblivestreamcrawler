@@ -1,12 +1,14 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_restful import Resource, Api
 from flask_cors import CORS
-from crawler import crawler_userinfo;
+from crawler import crawler_userinfo
 # from sqlalchemy import create_engine
 # from json import dumps
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='',
+            static_folder='./static')
 api = Api(app)
 CORS(app)
 
@@ -39,3 +41,8 @@ api.add_resource(live_video, '/live_video/<comment_id>')  # Route_1
 
 # api.add_resource(Tracks, '/tracks') # Route_2
 # api.add_resource(Employees_Name, '/employees/<employee_id>') # Route_3
+
+
+@app.route('/policy')
+def policy(path):
+    return send_from_directory('static')
