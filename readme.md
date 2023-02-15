@@ -7,3 +7,4 @@ pip freeze > requirements.txt
 % git add.
 % git commit -am "First python app"
 % git push heroku master
+% pip install -r requirements.txt

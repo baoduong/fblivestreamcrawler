@@ -15,9 +15,10 @@ def crawler_userinfo(commend_id: String):
     _id = commend_id.split('_')
     url = 'https://www.facebook.com/{pageId}/videos/{videoId}?comment_id={id}'.format(
         pageId=pageId, videoId=_id[0], id = _id[1])
+    print(url)
     res = requests.get(url)
     soup = BeautifulSoup(res.text, 'html.parser')
     script = soup.find('script')
-    print(script.text)
+    # print(script.text)
     json_data = json.dumps(script.text)
     return json_data
